@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		001 /* WigTryOnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101; };
+		002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102; };
+		003 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103; };
+		004 /* WigSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104; };
+		005 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105; };
+		006 /* Wig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106; };
+		007 /* WigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107; };
+		008 /* ARFaceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		100 /* WigTryOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WigTryOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		101 /* WigTryOnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigTryOnApp.swift; sourceTree = "<group>"; };
+		102 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		103 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
+		104 /* WigSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigSelectorView.swift; sourceTree = "<group>"; };
+		105 /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
+		106 /* Wig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wig.swift; sourceTree = "<group>"; };
+		107 /* WigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigManager.swift; sourceTree = "<group>"; };
+		108 /* ARFaceTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFaceTracker.swift; sourceTree = "<group>"; };
+		109 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		200 = {
+			isa = PBXGroup;
+			children = (
+				201 /* WigTryOn */,
+				100 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		100 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				100 /* WigTryOn.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		201 /* WigTryOn */ = {
+			isa = PBXGroup;
+			children = (
+				101 /* WigTryOnApp.swift */,
+				102 /* ContentView.swift */,
+				202 /* Views */,
+				203 /* Models */,
+				204 /* Services */,
+				205 /* Resources */,
+				109 /* Info.plist */,
+			);
+			path = WigTryOn;
+			sourceTree = "<group>";
+		};
+		202 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				103 /* ARViewContainer.swift */,
+				104 /* WigSelectorView.swift */,
+				105 /* ControlsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		203 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				106 /* Wig.swift */,
+				107 /* WigManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		204 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				108 /* ARFaceTracker.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		205 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				206 /* Wigs */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		206 /* Wigs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Wigs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		300 /* WigTryOn */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 400;
+			buildPhases = (
+				301 /* Sources */,
+				302 /* Frameworks */,
+				303 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WigTryOn;
+			productName = WigTryOn;
+			productReference = 100 /* WigTryOn.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		500 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					300 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 501;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 200;
+			productRefGroup = 100 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				300 /* WigTryOn */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		301 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				001 /* WigTryOnApp.swift in Sources */,
+				002 /* ContentView.swift in Sources */,
+				003 /* ARViewContainer.swift in Sources */,
+				004 /* WigSelectorView.swift in Sources */,
+				005 /* ControlsView.swift in Sources */,
+				006 /* Wig.swift in Sources */,
+				007 /* WigManager.swift in Sources */,
+				008 /* ARFaceTracker.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		302 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		303 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		600 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = WigTryOn/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.magoai.WigTryOn;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		601 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = WigTryOn/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.magoai.WigTryOn;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		400 /* Build configuration list for PBXNativeTarget "WigTryOn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				600 /* Debug */,
+				601 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		501 /* Build configuration list for PBXProject "WigTryOn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				600 /* Debug */,
+				601 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 500 /* Project object */;
+}
