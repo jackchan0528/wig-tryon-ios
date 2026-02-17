@@ -2,10 +2,10 @@ import SwiftUI
 
 struct WigSelectorView: View {
     @ObservedObject var wigManager: WigManager
-    
+
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 12) {
+            HStack(spacing: 8) {
                 ForEach(wigManager.wigs) { wig in
                     WigThumbnail(
                         wig: wig,
@@ -18,47 +18,39 @@ struct WigSelectorView: View {
                     }
                 }
             }
-            .padding(.horizontal)
+            .padding(.horizontal, 16)
         }
-        .frame(height: 80)
+        .frame(height: 48)
     }
 }
 
 struct WigThumbnail: View {
     let wig: Wig
     let isSelected: Bool
-    
+
     var body: some View {
-        VStack(spacing: 4) {
-            // Thumbnail
-            ZStack {
-                Circle()
-                    .fill(Color.black.opacity(0.3))
-                    .frame(width: 56, height: 56)
-                
-                if let thumbnail = wig.thumbnail {
-                    Image(uiImage: thumbnail)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 48, height: 48)
-                        .clipShape(Circle())
-                } else {
-                    Image(systemName: "person.crop.circle")
-                        .font(.title)
-                        .foregroundColor(.white)
-                }
+        ZStack {
+            Circle()
+                .fill(Color.black.opacity(0.35))
+                .frame(width: 42, height: 42)
+
+            if let thumbnail = wig.thumbnail {
+                Image(uiImage: thumbnail)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 34, height: 34)
+                    .clipShape(Circle())
+            } else {
+                Image(systemName: "person.crop.circle")
+                    .font(.system(size: 18))
+                    .foregroundColor(.white)
             }
-            .overlay(
-                Circle()
-                    .stroke(isSelected ? Color.white : Color.clear, lineWidth: 3)
-            )
-            
-            // Name
-            Text(wig.name)
-                .font(.caption2)
-                .foregroundColor(.white)
-                .lineLimit(1)
         }
+        .overlay(
+            Circle()
+                .stroke(isSelected ? Color.white : Color.clear, lineWidth: 2)
+                .frame(width: 42, height: 42)
+        )
     }
 }
 

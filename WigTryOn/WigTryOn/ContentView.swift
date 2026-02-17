@@ -4,85 +4,74 @@ import ARKit
 struct ContentView: View {
     @StateObject private var wigManager = WigManager()
     @StateObject private var arTracker = ARFaceTracker()
-    
-    @State private var showControls = true
+
+    @State private var showControls = false
     @State private var capturedImage: UIImage?
     @State private var showSaveAlert = false
-    
+
     var body: some View {
         ZStack {
             // AR View
             ARViewContainer(tracker: arTracker, wigManager: wigManager)
                 .edgesIgnoringSafeArea(.all)
-            
+
             // UI Overlay
-            VStack {
-                // Top bar
+            VStack(spacing: 0) {
+                // Top bar — status dot, settings toggle, camera
                 HStack {
-                    // Status indicator
-                    HStack(spacing: 8) {
-                        Circle()
-                            .fill(arTracker.isFaceDetected ? Color.green : Color.red)
-                            .frame(width: 12, height: 12)
-                        Text(arTracker.isFaceDetected ? "Face Detected" : "No Face")
-                            .font(.caption)
-                            .foregroundColor(.white)
-                    }
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(Color.black.opacity(0.5))
-                    .cornerRadius(20)
-                    
+                    Circle()
+                        .fill(arTracker.isFaceDetected ? Color.green : Color.red)
+                        .frame(width: 10, height: 10)
+                        .padding(8)
+                        .background(Color.black.opacity(0.4))
+                        .clipShape(Circle())
+
                     Spacer()
-                    
-                    // Capture button
+
+                    Button {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            showControls.toggle()
+                        }
+                    } label: {
+                        Image(systemName: showControls ? "slider.horizontal.3" : "slider.horizontal.3")
+                            .font(.body)
+                            .foregroundColor(showControls ? .white : .white.opacity(0.5))
+                            .padding(10)
+                            .background(Color.black.opacity(0.4))
+                            .clipShape(Circle())
+                    }
+
                     Button(action: capturePhoto) {
                         Image(systemName: "camera.fill")
-                            .font(.title2)
+                            .font(.body)
                             .foregroundColor(.white)
-                            .padding(12)
-                            .background(Color.black.opacity(0.5))
+                            .padding(10)
+                            .background(Color.black.opacity(0.4))
                             .clipShape(Circle())
                     }
                 }
-                .padding()
-                
+                .padding(.horizontal, 16)
+                .padding(.top, 8)
+
                 Spacer()
-                
+
                 // Bottom controls
                 if showControls {
-                    VStack(spacing: 16) {
-                        // Wig name
-                        Text(wigManager.currentWig?.name ?? "No Wig")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 8)
-                            .background(Color.black.opacity(0.5))
-                            .cornerRadius(20)
-                        
-                        // Wig selector
+                    VStack(spacing: 8) {
                         WigSelectorView(wigManager: wigManager)
-                        
-                        // Adjustment controls
                         ControlsView(wigManager: wigManager)
                     }
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 20)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
-            }
-        }
-        .onTapGesture(count: 2) {
-            withAnimation {
-                showControls.toggle()
             }
         }
         .alert("Photo Saved!", isPresented: $showSaveAlert) {
             Button("OK", role: .cancel) {}
         }
     }
-    
+
     private func capturePhoto() {
-        // Capture AR view
         arTracker.capturePhoto { image in
             if let image = image {
                 UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)

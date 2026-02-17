@@ -5,62 +5,62 @@ import SceneKit
 struct ARViewContainer: UIViewRepresentable {
     @ObservedObject var tracker: ARFaceTracker
     @ObservedObject var wigManager: WigManager
-    
+
     func makeUIView(context: Context) -> ARSCNView {
         let arView = ARSCNView(frame: .zero)
         arView.delegate = context.coordinator
         arView.session.delegate = context.coordinator
         arView.automaticallyUpdatesLighting = true
-        
+
         // Setup scene
         let scene = SCNScene()
         arView.scene = scene
-        
+
         // Configure AR session
         guard ARFaceTrackingConfiguration.isSupported else {
             print("Face tracking not supported on this device")
             return arView
         }
-        
+
         let config = ARFaceTrackingConfiguration()
         config.isLightEstimationEnabled = true
         config.maximumNumberOfTrackedFaces = 1
-        
+
         arView.session.run(config, options: [.resetTracking, .removeExistingAnchors])
-        
+
         // Store reference
         tracker.arView = arView
-        
+
         return arView
     }
-    
+
     func updateUIView(_ uiView: ARSCNView, context: Context) {
         // Update wig when selection changes
         context.coordinator.updateWig(wigManager.currentWig)
     }
-    
+
     func makeCoordinator() -> Coordinator {
         Coordinator(tracker: tracker, wigManager: wigManager)
     }
-    
+
     class Coordinator: NSObject, ARSCNViewDelegate, ARSessionDelegate {
         var tracker: ARFaceTracker
         var wigManager: WigManager
         var wigNode: SCNNode?
         var faceNode: SCNNode?
-        var faceOcclusionNode: SCNNode?  // ARKit face mesh occluder
+        var faceOcclusionNode: SCNNode?   // ARKit face mesh occluder
+        var skullOcclusionNode: SCNNode?  // Skull sphere occluder
         var currentWigID: String?
 
-        // Computed once per model load — the scale that maps the model to head size
+        // --- Raw model measurements (set once per model load) ---
+        // baseScale maps the model so its widest extent = referenceHeadWidth
         var baseScale: Float = 1.0
-        // The offset to center the model's bowl opening on the head
-        var baseOffset: SCNVector3 = SCNVector3Zero
+        var rawModelCenterX: Float = 0
+        var rawModelCenterZ: Float = 0
+        var rawInnerBowlY: Float = 0   // estimated inner bowl height in model space
 
-        // ARKit face anchor reference measurements (meters)
-        // Origin is at the bridge of the nose / between the eyes
-        static let headWidth: Float = 0.18        // temple-to-temple
-        static let crownAboveAnchor: Float = 0.11  // top of skull above face anchor
-        static let skullCenterZ: Float = -0.08     // center of skull behind face anchor
+        // Reference head width used to compute baseScale
+        static let referenceHeadWidth: Float = 0.22
 
         // Shared occlusion material — invisible but writes to depth buffer
         static let occlusionMaterial: SCNMaterial = {
@@ -97,16 +97,16 @@ struct ARViewContainer: UIViewRepresentable {
             }
 
             // 2. Skull sphere — occluder for the back/top of the head
+            //    Position and scale are set dynamically in updateWigTransform
             let skull = SCNSphere(radius: 0.09)
             skull.segmentCount = 24
             skull.materials = [Self.occlusionMaterial]
             let skullNode = SCNNode(geometry: skull)
-            // Positioned at skull center: slightly above nose bridge, well behind the face
-            skullNode.position = SCNVector3(0, 0.04, Self.skullCenterZ)
-            // Oval: taller than wide, deeper than wide
+            skullNode.position = SCNVector3(0, 0.04, -0.08)
             skullNode.scale = SCNVector3(1.0, 1.2, 1.1)
             skullNode.renderingOrder = -1
             node.addChildNode(skullNode)
+            skullOcclusionNode = skullNode
 
             // --- Wig ---
             if let wig = wigManager.currentWig {
@@ -171,27 +171,28 @@ struct ARViewContainer: UIViewRepresentable {
                 print("Wig model bounds: w=\(modelWidth) h=\(modelHeight) d=\(modelDepth)")
                 print("Wig model center: x=\(modelCenterX) y=\(modelCenterY) z=\(modelCenterZ)")
 
-                // --- Auto-scale so widest horizontal extent ≈ head width ---
+                // --- Auto-scale so widest horizontal extent ≈ reference head width ---
                 let maxHorizontal = max(modelWidth, modelDepth)
                 guard maxHorizontal > 0 else { return nil }
-                baseScale = Self.headWidth / maxHorizontal
+                baseScale = Self.referenceHeadWidth / maxHorizontal
 
-                // --- Position: center the wig around the skull ---
-                // Y: vertical center of wig at the crown
-                // Z: center of wig at the center of the skull (well behind the face)
-                baseOffset = SCNVector3(
-                    -baseScale * modelCenterX,                         // center horizontally
-                    Self.crownAboveAnchor - baseScale * modelCenterY,  // wig center at crown
-                    Self.skullCenterZ - baseScale * modelCenterZ       // wig center at skull center
-                )
+                // --- Store raw model measurements for dynamic fitting ---
+                rawModelCenterX = modelCenterX
+                rawModelCenterZ = modelCenterZ
+                rawInnerBowlY = (modelCenterY + maxVec.y) / 2  // ~75% up the bbox
 
-                // Apply initial transform
+                // Apply a default initial transform (will be overridden once face is detected)
                 let s = baseScale * Float(wigManager.scale)
                 container.scale = SCNVector3(s, s, s)
                 container.position = SCNVector3(
-                    baseOffset.x + Float(wigManager.offsetX),
-                    baseOffset.y + Float(wigManager.offsetY),
-                    baseOffset.z + Float(wigManager.offsetZ)
+                    -baseScale * rawModelCenterX,
+                    0.11 - baseScale * rawInnerBowlY,
+                    -0.08 - baseScale * rawModelCenterZ
+                )
+                container.eulerAngles = SCNVector3(
+                    Float(wigManager.rotationX) * .pi / 180,
+                    Float(wigManager.rotationY) * .pi / 180,
+                    Float(wigManager.rotationZ) * .pi / 180
                 )
 
                 // For non-GLB files, apply default PBR material
@@ -233,33 +234,64 @@ struct ARViewContainer: UIViewRepresentable {
             }
         }
 
+        // MARK: - Dynamic Face-Based Fitting
+
         func updateWigTransform(for faceAnchor: ARFaceAnchor) {
             guard let wigNode = wigNode else { return }
 
-            // Use actual face geometry to refine head width
+            // --- Measure the actual face from ARKit's mesh vertices ---
             let vertices = faceAnchor.geometry.vertices
-            var minX: Float = .greatestFiniteMagnitude
+            var minX: Float =  .greatestFiniteMagnitude
             var maxX: Float = -.greatestFiniteMagnitude
+            var maxY: Float = -.greatestFiniteMagnitude
             for v in vertices {
                 minX = min(minX, v.x)
                 maxX = max(maxX, v.x)
+                maxY = max(maxY, v.y)
             }
-            let measuredFaceWidth = maxX - minX  // face mesh width
-            // Head (with hair) is wider than the face mesh — roughly 1.3×
-            let estimatedHeadWidth = measuredFaceWidth * 1.3
 
-            // Adjust base scale to match this particular face
-            let faceAdjustedScale = baseScale * (estimatedHeadWidth / Self.headWidth)
+            let faceWidth   = maxX - minX   // measured face mesh width
+            let foreheadTop = maxY           // highest point of the face mesh
 
-            let s = faceAdjustedScale * Float(wigManager.scale)
+            // --- Derive head dimensions proportionally from face ---
+            // Head (with hair) is wider than the face mesh
+            let headWidth = faceWidth * 1.8
+            // Crown sits above the forehead, proportional to face size
+            let crownY = foreheadTop + faceWidth * 0.30
+            // Skull center depth behind the face anchor, proportional to face size
+            let skullZ = -faceWidth * 0.55
+
+            // --- Scale wig to fit this specific head ---
+            let faceScale = baseScale * (headWidth / Self.referenceHeadWidth)
+            let s = faceScale * Float(wigManager.scale)
             wigNode.scale = SCNVector3(s, s, s)
 
-            // Recompute position with the adjusted scale
+            // --- Position wig on this specific head ---
             wigNode.position = SCNVector3(
-                baseOffset.x + Float(wigManager.offsetX),
-                baseOffset.y + Float(wigManager.offsetY),
-                baseOffset.z + Float(wigManager.offsetZ)
+                -faceScale * rawModelCenterX + Float(wigManager.offsetX),
+                crownY - faceScale * rawInnerBowlY + Float(wigManager.offsetY),
+                skullZ - faceScale * rawModelCenterZ + Float(wigManager.offsetZ)
             )
+
+            // Apply rotation (degrees → radians)
+            wigNode.eulerAngles = SCNVector3(
+                Float(wigManager.rotationX) * .pi / 180,
+                Float(wigManager.rotationY) * .pi / 180,
+                Float(wigManager.rotationZ) * .pi / 180
+            )
+
+            // --- Scale skull occlusion to match this face ---
+            if let skullNode = skullOcclusionNode {
+                let skullRadius = faceWidth * 0.65
+                skullNode.position = SCNVector3(0, foreheadTop * 0.5, skullZ)
+                // Normalize against the base sphere radius (0.09)
+                let radiusScale = skullRadius / 0.09
+                skullNode.scale = SCNVector3(
+                    radiusScale,
+                    radiusScale * 1.2,   // taller
+                    radiusScale * 1.1    // deeper
+                )
+            }
         }
     }
 }
