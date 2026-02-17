@@ -7,175 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		001 /* WigTryOnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101; };
-		002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102; };
-		003 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103; };
-		004 /* WigSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104; };
-		005 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105; };
-		006 /* Wig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106; };
-		007 /* WigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107; };
-		008 /* ARFaceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108; };
+		A001 /* WigTryOnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001 /* WigTryOnApp.swift */; };
+		A002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002 /* ContentView.swift */; };
+		A003 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003 /* ARViewContainer.swift */; };
+		A004 /* WigSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B004 /* WigSelectorView.swift */; };
+		A005 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B005 /* ControlsView.swift */; };
+		A006 /* Wig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006 /* Wig.swift */; };
+		A007 /* WigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B007 /* WigManager.swift */; };
+		A008 /* ARFaceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B008 /* ARFaceTracker.swift */; };
+		A009 /* GLBSceneLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B010 /* GLBSceneLoader.swift */; };
+		A010 /* Meshy_AI_Brown_Layered_Wig_Des_0213181732_texture.glb in Resources */ = {isa = PBXBuildFile; fileRef = B011 /* Meshy_AI_Brown_Layered_Wig_Des_0213181732_texture.glb */; };
+		A011 /* Meshy_AI_Curly_Waves_Wig_0213181408_texture.glb in Resources */ = {isa = PBXBuildFile; fileRef = B012 /* Meshy_AI_Curly_Waves_Wig_0213181408_texture.glb */; };
+		A012 /* Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb in Resources */ = {isa = PBXBuildFile; fileRef = B013 /* Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb */; };
+		A013 /* Meshy_AI_long_hair_wig_no_hea_0213181403_texture.glb in Resources */ = {isa = PBXBuildFile; fileRef = B014 /* Meshy_AI_long_hair_wig_no_hea_0213181403_texture.glb */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		100 /* WigTryOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WigTryOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		101 /* WigTryOnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigTryOnApp.swift; sourceTree = "<group>"; };
-		102 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		103 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
-		104 /* WigSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigSelectorView.swift; sourceTree = "<group>"; };
-		105 /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
-		106 /* Wig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wig.swift; sourceTree = "<group>"; };
-		107 /* WigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigManager.swift; sourceTree = "<group>"; };
-		108 /* ARFaceTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFaceTracker.swift; sourceTree = "<group>"; };
-		109 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B000 /* WigTryOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WigTryOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B001 /* WigTryOnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigTryOnApp.swift; sourceTree = "<group>"; };
+		B002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B003 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
+		B004 /* WigSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigSelectorView.swift; sourceTree = "<group>"; };
+		B005 /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
+		B006 /* Wig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wig.swift; sourceTree = "<group>"; };
+		B007 /* WigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigManager.swift; sourceTree = "<group>"; };
+		B008 /* ARFaceTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFaceTracker.swift; sourceTree = "<group>"; };
+		B009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B010 /* GLBSceneLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLBSceneLoader.swift; sourceTree = "<group>"; };
+		B011 /* Meshy_AI_Brown_Layered_Wig_Des_0213181732_texture.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Meshy_AI_Brown_Layered_Wig_Des_0213181732_texture.glb; sourceTree = "<group>"; };
+		B012 /* Meshy_AI_Curly_Waves_Wig_0213181408_texture.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Meshy_AI_Curly_Waves_Wig_0213181408_texture.glb; sourceTree = "<group>"; };
+		B013 /* Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb; sourceTree = "<group>"; };
+		B014 /* Meshy_AI_long_hair_wig_no_hea_0213181403_texture.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Meshy_AI_long_hair_wig_no_hea_0213181403_texture.glb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXGroup section */
-		200 = {
-			isa = PBXGroup;
-			children = (
-				201 /* WigTryOn */,
-				100 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		100 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				100 /* WigTryOn.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		201 /* WigTryOn */ = {
-			isa = PBXGroup;
-			children = (
-				101 /* WigTryOnApp.swift */,
-				102 /* ContentView.swift */,
-				202 /* Views */,
-				203 /* Models */,
-				204 /* Services */,
-				205 /* Resources */,
-				109 /* Info.plist */,
-			);
-			path = WigTryOn;
-			sourceTree = "<group>";
-		};
-		202 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				103 /* ARViewContainer.swift */,
-				104 /* WigSelectorView.swift */,
-				105 /* ControlsView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		203 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				106 /* Wig.swift */,
-				107 /* WigManager.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		204 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				108 /* ARFaceTracker.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		205 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				206 /* Wigs */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		206 /* Wigs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Wigs;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		300 /* WigTryOn */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 400;
-			buildPhases = (
-				301 /* Sources */,
-				302 /* Frameworks */,
-				303 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = WigTryOn;
-			productName = WigTryOn;
-			productReference = 100 /* WigTryOn.app */;
-			productType = "com.apple.product-type.application";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		500 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
-				TargetAttributes = {
-					300 = {
-						CreatedOnToolsVersion = 15.0;
-					};
-				};
-			};
-			buildConfigurationList = 501;
-			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = 200;
-			productRefGroup = 100 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				300 /* WigTryOn */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXSourcesBuildPhase section */
-		301 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				001 /* WigTryOnApp.swift in Sources */,
-				002 /* ContentView.swift in Sources */,
-				003 /* ARViewContainer.swift in Sources */,
-				004 /* WigSelectorView.swift in Sources */,
-				005 /* ControlsView.swift in Sources */,
-				006 /* Wig.swift in Sources */,
-				007 /* WigManager.swift in Sources */,
-				008 /* ARFaceTracker.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
 /* Begin PBXFrameworksBuildPhase section */
-		302 /* Frameworks */ = {
+		D002 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -184,18 +50,172 @@
 		};
 /* End PBXFrameworksBuildPhase section */
 
+/* Begin PBXGroup section */
+		C000 = {
+			isa = PBXGroup;
+			children = (
+				C001 /* WigTryOn */,
+				C002 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C001 /* WigTryOn */ = {
+			isa = PBXGroup;
+			children = (
+				B001 /* WigTryOnApp.swift */,
+				B002 /* ContentView.swift */,
+				C003 /* Views */,
+				C004 /* Models */,
+				C005 /* Services */,
+				C006 /* Resources */,
+				B009 /* Info.plist */,
+			);
+			path = WigTryOn;
+			sourceTree = "<group>";
+		};
+		C002 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B000 /* WigTryOn.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C003 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B003 /* ARViewContainer.swift */,
+				B004 /* WigSelectorView.swift */,
+				B005 /* ControlsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B006 /* Wig.swift */,
+				B007 /* WigManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C005 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B008 /* ARFaceTracker.swift */,
+				B010 /* GLBSceneLoader.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C006 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C007 /* Wigs */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C007 /* Wigs */ = {
+			isa = PBXGroup;
+			children = (
+				B011 /* Meshy_AI_Brown_Layered_Wig_Des_0213181732_texture.glb */,
+				B012 /* Meshy_AI_Curly_Waves_Wig_0213181408_texture.glb */,
+				B013 /* Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb */,
+				B014 /* Meshy_AI_long_hair_wig_no_hea_0213181403_texture.glb */,
+			);
+			path = Wigs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D000 /* WigTryOn */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E000 /* Build configuration list for PBXNativeTarget "WigTryOn" */;
+			buildPhases = (
+				D001 /* Sources */,
+				D002 /* Frameworks */,
+				D003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WigTryOn;
+			productName = WigTryOn;
+			productReference = B000 /* WigTryOn.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					D000 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = E001 /* Build configuration list for PBXProject "WigTryOn" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C000;
+			productRefGroup = C002 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D000 /* WigTryOn */,
+			);
+		};
+/* End PBXProject section */
+
 /* Begin PBXResourcesBuildPhase section */
-		303 /* Resources */ = {
+		D003 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A010 /* Meshy_AI_Brown_Layered_Wig_Des_0213181732_texture.glb in Resources */,
+				A011 /* Meshy_AI_Curly_Waves_Wig_0213181408_texture.glb in Resources */,
+				A012 /* Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb in Resources */,
+				A013 /* Meshy_AI_long_hair_wig_no_hea_0213181403_texture.glb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXSourcesBuildPhase section */
+		D001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A001 /* WigTryOnApp.swift in Sources */,
+				A002 /* ContentView.swift in Sources */,
+				A003 /* ARViewContainer.swift in Sources */,
+				A004 /* WigSelectorView.swift in Sources */,
+				A005 /* ControlsView.swift in Sources */,
+				A006 /* Wig.swift in Sources */,
+				A007 /* WigManager.swift in Sources */,
+				A008 /* ARFaceTracker.swift in Sources */,
+				A009 /* GLBSceneLoader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
 /* Begin XCBuildConfiguration section */
-		600 /* Debug */ = {
+		G000 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -204,7 +224,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -216,27 +236,17 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = WigTryOn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.magoai.WigTryOn;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		601 /* Release */ = {
+		G001 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -246,55 +256,79 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = WigTryOn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		G002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4AVJG5644A;
+				INFOPLIST_FILE = WigTryOn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.magoai.WigTryOn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
+			};
+			name = Debug;
+		};
+		G003 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4AVJG5644A;
+				INFOPLIST_FILE = WigTryOn/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.magoai.WigTryOn;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		400 /* Build configuration list for PBXNativeTarget "WigTryOn" */ = {
+		E000 /* Build configuration list for PBXNativeTarget "WigTryOn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				600 /* Debug */,
-				601 /* Release */,
+				G002 /* Debug */,
+				G003 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		501 /* Build configuration list for PBXProject "WigTryOn" */ = {
+		E001 /* Build configuration list for PBXProject "WigTryOn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				600 /* Debug */,
-				601 /* Release */,
+				G000 /* Debug */,
+				G001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
 	};
-	rootObject = 500 /* Project object */;
+	rootObject = F000 /* Project object */;
 }

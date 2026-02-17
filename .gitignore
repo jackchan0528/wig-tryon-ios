@@ -19,6 +19,14 @@ Package.resolved
 Pods/
 Podfile.lock
 
+# 3D model files
+*.glb
+*.usdz
+*.scn
+*.dae
+*.obj
+*.fbx
+
 # OS
 .DS_Store
 *.swp

@@ -8,48 +8,40 @@ class WigManager: ObservableObject {
     @Published var scale: Double = 1.0
     @Published var offsetX: Double = 0.0
     @Published var offsetY: Double = 0.0
+    @Published var offsetZ: Double = 0.0
     
     init() {
         loadWigs()
     }
     
     func loadWigs() {
-        // Load wigs from bundle
         var loadedWigs: [Wig] = []
-        
-        // Check for .usdz and .scn files in Wigs folder
-        if let wigsURL = Bundle.main.resourceURL?.appendingPathComponent("Wigs") {
-            do {
-                let contents = try FileManager.default.contentsOfDirectory(
-                    at: wigsURL,
-                    includingPropertiesForKeys: nil
-                )
-                
-                for url in contents {
-                    let ext = url.pathExtension.lowercased()
-                    if ["usdz", "scn", "dae"].contains(ext) {
-                        let name = url.deletingPathExtension().lastPathComponent
-                            .replacingOccurrences(of: "_", with: " ")
-                            .capitalized
-                        
-                        let wig = Wig(
-                            id: url.lastPathComponent,
-                            name: name,
-                            modelURL: url
-                        )
-                        loadedWigs.append(wig)
-                    }
+
+        // Search the bundle for supported 3D model files
+        let extensions = ["glb", "usdz", "scn", "dae"]
+        for ext in extensions {
+            if let urls = Bundle.main.urls(forResourcesWithExtension: ext, subdirectory: nil) {
+                for url in urls {
+                    let name = url.deletingPathExtension().lastPathComponent
+                        .replacingOccurrences(of: "_", with: " ")
+                        .capitalized
+                    let wig = Wig(id: url.lastPathComponent, name: name, modelURL: url)
+                    loadedWigs.append(wig)
                 }
-            } catch {
-                print("Error loading wigs: \(error)")
             }
         }
-        
-        // If no wigs found, use samples for demo
+
         if loadedWigs.isEmpty {
             loadedWigs = Wig.samples
         }
-        
+
+        // Put Brown Layered Wig first as the default
+        let preferred = "Brown_Layered_Wig"
+        if let idx = loadedWigs.firstIndex(where: { $0.id.contains(preferred) }) {
+            let wig = loadedWigs.remove(at: idx)
+            loadedWigs.insert(wig, at: 0)
+        }
+
         wigs = loadedWigs
         currentWig = wigs.first
     }
@@ -80,18 +72,10 @@ class WigManager: ObservableObject {
         currentWig = wigs[prevIndex]
     }
     
-    func adjustScale(_ delta: Double) {
-        scale = max(0.5, min(1.5, scale + delta))
-    }
-    
-    func adjustPosition(dx: Double, dy: Double) {
-        offsetX += dx
-        offsetY += dy
-    }
-    
     func reset() {
         scale = 1.0
         offsetX = 0.0
         offsetY = 0.0
+        offsetZ = 0.0
     }
 }
