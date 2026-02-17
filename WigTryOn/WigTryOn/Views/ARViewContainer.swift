@@ -50,6 +50,7 @@ struct ARViewContainer: UIViewRepresentable {
         var faceNode: SCNNode?
         var faceOcclusionNode: SCNNode?   // ARKit face mesh occluder
         var skullOcclusionNode: SCNNode?  // Skull sphere occluder
+        var neckOcclusionNode: SCNNode?   // Neck cylinder occluder
         var currentWigID: String?
 
         // --- Raw model measurements (set once per model load) ---
@@ -107,6 +108,16 @@ struct ARViewContainer: UIViewRepresentable {
             skullNode.renderingOrder = -1
             node.addChildNode(skullNode)
             skullOcclusionNode = skullNode
+
+            // 3. Neck cylinder — occluder for the neck area so back hair goes behind it
+            let neck = SCNCylinder(radius: 0.05, height: 0.12)
+            neck.radialSegmentCount = 16
+            neck.materials = [Self.occlusionMaterial]
+            let neckNode = SCNNode(geometry: neck)
+            neckNode.position = SCNVector3(0, -0.06, -0.04)
+            neckNode.renderingOrder = -1
+            node.addChildNode(neckNode)
+            neckOcclusionNode = neckNode
 
             // --- Wig ---
             if let wig = wigManager.currentWig {
@@ -291,6 +302,18 @@ struct ARViewContainer: UIViewRepresentable {
                     radiusScale * 1.2,   // taller
                     radiusScale * 1.1    // deeper
                 )
+            }
+
+            // --- Scale neck occlusion to match this face ---
+            if let neckNode = neckOcclusionNode {
+                let neckRadius = faceWidth * 0.45   // neck is narrower than skull
+                let neckHeight = faceWidth * 1.5    // extends well below chin
+                // Position: below the face anchor, slightly behind center
+                neckNode.position = SCNVector3(0, -neckHeight * 0.4, skullZ * 0.5)
+                // Normalize against the base cylinder (radius=0.05, height=0.12)
+                let rScale = neckRadius / 0.05
+                let hScale = neckHeight / 0.12
+                neckNode.scale = SCNVector3(rScale, hScale, rScale)
             }
         }
     }
