@@ -166,8 +166,19 @@ struct ARViewContainer: UIViewRepresentable {
 
                 // Container that holds all model children
                 let container = SCNNode()
+
+                let contentNode: SCNNode
+                if url.pathExtension.lowercased() == "usdz" {
+                    let correctionNode = SCNNode()
+                    correctionNode.eulerAngles = SCNVector3(Float.pi * 1.5, 0, 0) // 270° (180° axis fix + 90° USDZ-specific tilt)
+                    container.addChildNode(correctionNode)
+                    contentNode = correctionNode
+                } else {
+                    contentNode = container
+                }
+
                 for child in scene.rootNode.childNodes {
-                    container.addChildNode(child.clone())
+                    contentNode.addChildNode(child.clone())
                 }
 
                 // --- Measure the model's bounding box ---

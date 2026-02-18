@@ -5,22 +5,22 @@ struct WigSelectorView: View {
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 8) {
+            HStack(spacing: 10) {
                 ForEach(wigManager.wigs) { wig in
                     WigThumbnail(
                         wig: wig,
                         isSelected: wigManager.currentWig?.id == wig.id
                     )
                     .onTapGesture {
-                        withAnimation(.spring()) {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                             wigManager.selectWig(wig)
                         }
                     }
                 }
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 2)
         }
-        .frame(height: 48)
     }
 }
 
@@ -31,26 +31,22 @@ struct WigThumbnail: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(Color.black.opacity(0.35))
+                .fill(isSelected ? Color.primary : Color(.systemFill))
                 .frame(width: 42, height: 42)
 
             if let thumbnail = wig.thumbnail {
                 Image(uiImage: thumbnail)
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 34, height: 34)
+                    .scaledToFill()
+                    .frame(width: 37, height: 37)
                     .clipShape(Circle())
             } else {
-                Image(systemName: "person.crop.circle")
-                    .font(.system(size: 18))
-                    .foregroundColor(.white)
+                Image(systemName: "person.crop.circle.fill")
+                    .font(.system(size: 20))
+                    .foregroundStyle(isSelected ? Color(.systemBackground) : .secondary)
             }
         }
-        .overlay(
-            Circle()
-                .stroke(isSelected ? Color.white : Color.clear, lineWidth: 2)
-                .frame(width: 42, height: 42)
-        )
+        .animation(.spring(response: 0.25, dampingFraction: 0.7), value: isSelected)
     }
 }
 

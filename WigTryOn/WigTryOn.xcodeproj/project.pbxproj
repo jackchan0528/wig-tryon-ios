@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047EA2A62F45011C00505BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047EA2A52F45011C00505BD4 /* Assets.xcassets */; };
 		A001 /* WigTryOnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001 /* WigTryOnApp.swift */; };
 		A002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002 /* ContentView.swift */; };
 		A003 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003 /* ARViewContainer.swift */; };
@@ -17,12 +18,14 @@
 		A008 /* ARFaceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B008 /* ARFaceTracker.swift */; };
 		A009 /* GLBSceneLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B010 /* GLBSceneLoader.swift */; };
 		A010 /* Meshy_AI_Brown_Layered_Wig_Des_0213181732_texture.glb in Resources */ = {isa = PBXBuildFile; fileRef = B011 /* Meshy_AI_Brown_Layered_Wig_Des_0213181732_texture.glb */; };
-		A011 /* Meshy_AI_Curly_Waves_Wig_0213181408_texture.glb in Resources */ = {isa = PBXBuildFile; fileRef = B012 /* Meshy_AI_Curly_Waves_Wig_0213181408_texture.glb */; };
 		A012 /* Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb in Resources */ = {isa = PBXBuildFile; fileRef = B013 /* Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb */; };
 		A013 /* Meshy_AI_long_hair_wig_no_hea_0213181403_texture.glb in Resources */ = {isa = PBXBuildFile; fileRef = B014 /* Meshy_AI_long_hair_wig_no_hea_0213181403_texture.glb */; };
+		A014 /* Meshy_AI_Curly_Waves_Wig_0217195508_texture.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B015 /* Meshy_AI_Curly_Waves_Wig_0217195508_texture.usdz */; };
+		A015 /* gdhair.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B016 /* gdhair.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		047EA2A52F45011C00505BD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B000 /* WigTryOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WigTryOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B001 /* WigTryOnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigTryOnApp.swift; sourceTree = "<group>"; };
 		B002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,9 +38,10 @@
 		B009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B010 /* GLBSceneLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLBSceneLoader.swift; sourceTree = "<group>"; };
 		B011 /* Meshy_AI_Brown_Layered_Wig_Des_0213181732_texture.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Meshy_AI_Brown_Layered_Wig_Des_0213181732_texture.glb; sourceTree = "<group>"; };
-		B012 /* Meshy_AI_Curly_Waves_Wig_0213181408_texture.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Meshy_AI_Curly_Waves_Wig_0213181408_texture.glb; sourceTree = "<group>"; };
 		B013 /* Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb; sourceTree = "<group>"; };
 		B014 /* Meshy_AI_long_hair_wig_no_hea_0213181403_texture.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Meshy_AI_long_hair_wig_no_hea_0213181403_texture.glb; sourceTree = "<group>"; };
+		B015 /* Meshy_AI_Curly_Waves_Wig_0217195508_texture.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Meshy_AI_Curly_Waves_Wig_0217195508_texture.usdz; sourceTree = "<group>"; };
+		B016 /* gdhair.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = gdhair.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 		C000 = {
 			isa = PBXGroup;
 			children = (
+				047EA2A52F45011C00505BD4 /* Assets.xcassets */,
 				C001 /* WigTryOn */,
 				C002 /* Products */,
 			);
@@ -121,9 +126,10 @@
 			isa = PBXGroup;
 			children = (
 				B011 /* Meshy_AI_Brown_Layered_Wig_Des_0213181732_texture.glb */,
-				B012 /* Meshy_AI_Curly_Waves_Wig_0213181408_texture.glb */,
-				B013 /* Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb */,
+					B013 /* Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb */,
 				B014 /* Meshy_AI_long_hair_wig_no_hea_0213181403_texture.glb */,
+				B015 /* Meshy_AI_Curly_Waves_Wig_0217195508_texture.usdz */,
+				B016 /* gdhair.usdz */,
 			);
 			path = Wigs;
 			sourceTree = "<group>";
@@ -187,9 +193,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A010 /* Meshy_AI_Brown_Layered_Wig_Des_0213181732_texture.glb in Resources */,
-				A011 /* Meshy_AI_Curly_Waves_Wig_0213181408_texture.glb in Resources */,
-				A012 /* Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb in Resources */,
+					A012 /* Meshy_AI_Flowing_Tresses_Sculp_0213181118_texture.glb in Resources */,
 				A013 /* Meshy_AI_long_hair_wig_no_hea_0213181403_texture.glb in Resources */,
+				A014 /* Meshy_AI_Curly_Waves_Wig_0217195508_texture.usdz in Resources */,
+				A015 /* gdhair.usdz in Resources */,
+				047EA2A62F45011C00505BD4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +282,8 @@
 		G002 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4AVJG5644A;
 				INFOPLIST_FILE = WigTryOn/Info.plist;
@@ -292,6 +302,8 @@
 		G003 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4AVJG5644A;
 				INFOPLIST_FILE = WigTryOn/Info.plist;

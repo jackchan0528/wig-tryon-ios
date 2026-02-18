@@ -11,9 +11,9 @@ class WigManager: ObservableObject {
     @Published var offsetZ: Double = 0.0
 
     // Rotation in degrees — converted to radians when applied
-    @Published var rotationY: Double = 0.0   // Spin: which side faces front (-180° to 180°)
-    @Published var rotationX: Double = 0.0   // Tilt: tip forward/backward (-45° to 45°)
-    @Published var rotationZ: Double = 0.0   // Roll: tilt left/right (-45° to 45°)
+    @Published var rotationY: Double = 0.0
+    @Published var rotationX: Double = 0.0
+    @Published var rotationZ: Double = 0.0
     
     init() {
         loadWigs()

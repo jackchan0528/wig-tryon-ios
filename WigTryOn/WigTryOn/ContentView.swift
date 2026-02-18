@@ -6,76 +6,68 @@ struct ContentView: View {
     @StateObject private var arTracker = ARFaceTracker()
 
     @State private var showControls = false
-    @State private var capturedImage: UIImage?
-    @State private var showSaveAlert = false
 
     var body: some View {
         ZStack {
-            // AR View
             ARViewContainer(tracker: arTracker, wigManager: wigManager)
                 .edgesIgnoringSafeArea(.all)
 
-            // UI Overlay
             VStack(spacing: 0) {
-                // Top bar — status dot, settings toggle, camera
+                // Status indicator — top left
                 HStack {
                     Circle()
                         .fill(arTracker.isFaceDetected ? Color.green : Color.red)
-                        .frame(width: 10, height: 10)
-                        .padding(8)
-                        .background(Color.black.opacity(0.4))
-                        .clipShape(Circle())
-
+                        .frame(width: 8, height: 8)
+                        .padding(9)
+                        .background(.ultraThinMaterial, in: Circle())
                     Spacer()
-
-                    Button {
-                        withAnimation(.easeInOut(duration: 0.2)) {
-                            showControls.toggle()
-                        }
-                    } label: {
-                        Image(systemName: showControls ? "slider.horizontal.3" : "slider.horizontal.3")
-                            .font(.body)
-                            .foregroundColor(showControls ? .white : .white.opacity(0.5))
-                            .padding(10)
-                            .background(Color.black.opacity(0.4))
-                            .clipShape(Circle())
-                    }
-
-                    Button(action: capturePhoto) {
-                        Image(systemName: "camera.fill")
-                            .font(.body)
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .background(Color.black.opacity(0.4))
-                            .clipShape(Circle())
-                    }
                 }
                 .padding(.horizontal, 16)
                 .padding(.top, 8)
 
                 Spacer()
 
-                // Bottom controls
-                if showControls {
-                    VStack(spacing: 8) {
-                        WigSelectorView(wigManager: wigManager)
-                        ControlsView(wigManager: wigManager)
-                    }
-                    .padding(.bottom, 20)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
-                }
-            }
-        }
-        .alert("Photo Saved!", isPresented: $showSaveAlert) {
-            Button("OK", role: .cancel) {}
-        }
-    }
+                // Bottom area
+                VStack(spacing: 6) {
+                    if showControls {
+                        // Slide-up panel
+                        VStack(spacing: 0) {
+                            // Drag handle
+                            Capsule()
+                                .fill(.secondary.opacity(0.45))
+                                .frame(width: 28, height: 4)
+                                .padding(.top, 6)
+                                .padding(.bottom, 2)
 
-    private func capturePhoto() {
-        arTracker.capturePhoto { image in
-            if let image = image {
-                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                showSaveAlert = true
+                            WigSelectorView(wigManager: wigManager)
+                                .padding(.vertical, 2)
+
+                            Divider()
+
+                            ControlsView(wigManager: wigManager)
+                        }
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                    }
+
+                    // Settings toggle button — always at bottom right
+                    HStack {
+                        Spacer()
+                        Button {
+                            withAnimation(.spring(response: 0.35, dampingFraction: 0.85)) {
+                                showControls.toggle()
+                            }
+                        } label: {
+                            Image(systemName: showControls ? "xmark" : "slider.horizontal.3")
+                                .font(.system(size: 14, weight: .semibold))
+                                .foregroundStyle(.primary)
+                                .frame(width: 44, height: 44)
+                                .background(.ultraThinMaterial, in: Circle())
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                }
+                .padding(.bottom, 16)
             }
         }
     }
